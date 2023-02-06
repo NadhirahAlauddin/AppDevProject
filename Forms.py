@@ -31,10 +31,10 @@ def validate_existing_username(form, field):
 
 
 class RegisterForm(Form):
-     email_address = EmailField('Email Address:',[validators.Email(), validators.DataRequired(), validators.DataRequired()]) #validate_existing_email was replaced with validators.DataRequired
-     username = StringField('Username:',[validators.Length(min=1, max=150), validators.DataRequired(), validators.DataRequired() ]) #validate_existing_username was replaced with validators.DataRequired
      first_name = StringField('First Name', [validators.Length(min=1, max=150), validators.DataRequired()])
      last_name = StringField('Last Name', [validators.Length(min=1, max=150), validators.DataRequired()])
+     email_address = EmailField('Email Address:',[validators.Email(), validators.DataRequired(), validators.DataRequired()]) #validate_existing_email was replaced with validators.DataRequired
+     username = StringField('Username:',[validators.Length(min=1, max=150), validators.DataRequired(), validators.DataRequired() ]) #validate_existing_username was replaced with validators.DataRequired
      gender = SelectField('Gender', [validators.DataRequired()],choices=[('', 'Select'), ('F', 'Female'), ('M', 'Male')], default='')
      password = PasswordField('Password:',[validators.Length(min=8, max=150), validators.InputRequired(), validate_password])
      confirm_password = PasswordField('Confirm Password:',[validators.EqualTo('password', message='Passwords must match'),validators.InputRequired()])
