@@ -4,7 +4,7 @@ class User:
 
     # initializer method
     # Details needed are Email_add, username, Fname, lname, pwd, confirm pwd, gender)
-    def __init__(self, first_name, last_name, gender, email_add, username, pwd, confirm_pwd):
+    def __init__(self, first_name, last_name, gender, email_add, username, pwd, confirm_password):
         User.count_id += 1
         self.__user_id = User.count_id
         self.__first_name = first_name
@@ -13,7 +13,7 @@ class User:
         self.__email_add = email_add
         self.__username = username
         self.__pwd = pwd
-        self.__confirm_pwd = confirm_pwd
+        self.__confirm_password = confirm_password
 
 
     # accessor methods
@@ -36,10 +36,10 @@ class User:
         return self.__username
 
     def get_pwd(self):
-        return self.__pwd
+        return self.__password
 
     def get_confirm_pwd(self):
-        return self.__confirm_pwd
+        return self.__confirm_password
 
     # mutator methods
     def set_user_id(self, user_id):
@@ -60,8 +60,8 @@ class User:
     def set_username(self, username):
         self.__username = username
 
-    def set_pwd(self, pwd):
-        self.__pwd = pwd
+    def set_pwd(self, password):
+        self.__password = password
 
-    def set_confirm_pwd(self, confirm_pwd):
-        self.__confirm_pwd = confirm_pwd
+    def set_confirm_pwd(self, confirm_password):
+        self.__confirm_password = confirm_password
