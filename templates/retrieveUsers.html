@@ -1,5 +1,5 @@
 {% extends "base.html" %}
-{% block title %}Library Loan System - Retrieve Users{% endblock %}
+{% block title %}Digital Pharmacy - Retrieve Users{% endblock %}
 
 {% block content %}
 <h1 class="display-4">Retrieve Users</h1>
@@ -20,19 +20,24 @@
         <th>First Name</th>
         <th>Last Name</th>
         <th>Gender</th>
-        <th>Membership</th>
-        <th>Remarks</th>
-        <th></th>
+        <th>Username</th>
+        <th>Password</th>
+        <th>Confirmed Password</th>
         <th></th>
       </tr>
     </thead>
     <tbody>
-    {% for user in users_list %}
+    {% for register_users in regUsers_list %}
      <tr>
-        <td>{{ user.get_user_id() }}</td>
-        <td>{{ user.get_first_name() }}</td>
-        <td>{{ user.get_last_name() }}</td>
-        <td>{{ user.get_gender() }}</td>
+        <td>{{ register_users.get_user_id() }}</td>
+        <td>{{ register_users.get_first_name() }}</td>
+        <td>{{ register_users.get_last_name() }}</td>
+        <td>{{ register_users.get_gender() }}</td>
+         <td>{{ register_users.get_email_add() }}</td>
+         <td>{{ register_users.get_username }}</td>
+         <td>{{ register_users.get_pwd() }}</td>
+         <td>{{ register_users.get_confirm_pwd() }}</td>
+         <!--
         {% if user.get_membership() == "F" %}
         <td>Fellow</td>
         {% elif user.get_membership() == "S" %}
@@ -40,10 +45,10 @@
         {% elif user.get_membership() == "P" %}
         <td>Professional</td>
         {% endif %}
-        <td>{{ user.get_remarks() }}</td>
-        <td><a href="/updateUser/{{user.get_user_id()}}" class="btn btn-warning">Update</a></td>
+        <td>{{ user.get_remarks() }}</td> -->
+        <td><a href="/updateUser/{{register_users.get_user_id()}}" class="btn btn-warning">Update</a></td>
         <td>
-          <form action="{{url_for('delete_user', id=user.get_user_id())}}" method="POST">
+          <form action="{{url_for('delete_user', id=register_users.get_user_id())}}" method="POST">
 <!--            <input type="submit" value="Delete" class="btn btn-danger" onclick="return confirm('Are you sure you want to delete {{user.get_first_name()}} {{user.get_last_name()}}?');">-->
 <!-- Button to Open the Modal -->
 <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#myModal_{{user.get_user_id()}}">
@@ -51,7 +56,7 @@
 </button>
 
 <!-- The Modal -->
-<div class="modal" id="myModal_{{user.get_user_id()}}">
+<div class="modal" id="myModal_{{register_users.get_user_id()}}">
   <div class="modal-dialog">
     <div class="modal-content">
 
@@ -63,7 +68,7 @@
 
       <!-- Modal body -->
       <div class="modal-body">
-        Are you sure you want to delete {{user.get_first_name()}} {{user.get_last_name()}}?
+        Are you sure you want to delete {{register_users.get_first_name()}} {{register_users.get_last_name()}}?
       </div>
 
       <!-- Modal footer -->
